@@ -1,0 +1,30 @@
+version: '2'
+services:
+  gateway:
+    container_name: gateway
+    build: ./nginx
+    ports: 
+     - "8000:80" #host:container
+    depends_on:
+      - auth-service
+      - secondary-service
+  frontend: 
+    container_name: 'frontend'
+    image: wookia/rso-frontend:latest
+    environment:
+      PORT: "7373"
+    ports:
+      - "8080:7373"
+    depends_on:
+      - auth-service 
+      - secondary-service
+  auth-service: 
+    container_name: 'auth-service'
+    image: wookia/rso-services-auth:latest
+    environment: 
+      - PORT=8000
+  secondary-service:
+    container_name: 'secondary-service'
+    image: wookia/rso-services-secondary:latest
+    environment: 
+      - PORT=8000
