@@ -3,4 +3,5 @@
 ./stop_local.sh
 docker-machine stop default
 docker-machine start default
-./start.sh
+docker-machine env
+./start_local.sh
