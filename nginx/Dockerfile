@@ -1,9 +1,7 @@
 FROM nginx:1.13.8
-COPY nginx.conf.template /etc/nginx/nginx.conf.template
-COPY preprocess.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/preprocess.sh
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 EXPOSE 443
 
-CMD /bin/bash -c "preprocess.sh && nginx -g 'daemon off;'"
+CMD /bin/bash -c "nginx -g 'daemon off;'"
