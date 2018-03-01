@@ -29,6 +29,7 @@ services:
       - auth-db
 
   auth-db:
+    container_name: 'auth-db'
     image: postgres
     environment:
       - POSTGRES_USER=postgres
@@ -43,6 +44,7 @@ services:
       - secondary-db
 
   secondary-db:
+    container_name: 'secondary-db'
     image: postgres
     environment:
       - POSTGRES_USER=postgres
