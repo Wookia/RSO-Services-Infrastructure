@@ -1,13 +1,14 @@
 version: '2'
 services:
   gateway:
-    container_name: gateway
-    build: ./nginx
-    ports: 
-     - "8000:80" #host:container
-    depends_on:
-      - auth-service
-      - secondary-service
+    image: dockercloud/haproxy
+    links:
+     - auth-service
+     - secondary-service
+    ports:
+     - '8000:80'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
   frontend: 
     container_name: 'frontend'
@@ -21,10 +22,10 @@ services:
       - secondary-service
 
   auth-service: 
-    container_name: 'auth-service'
     image: wookia/rso-services-auth:latest
     environment: 
       - PORT=8000
+      - VIRTUAL_HOST=*/auth, */auth/*
     depends_on:
       - auth-db
 
@@ -36,10 +37,10 @@ services:
       - POSTGRES_PASSWORD=password
 
   secondary-service:
-    container_name: 'secondary-service'
     image: wookia/rso-services-secondary:latest
     environment: 
       - PORT=8000
+      - VIRTUAL_HOST=*/secondary, */secondary/*
     depends_on:
       - secondary-db
 
