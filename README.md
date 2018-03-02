@@ -58,31 +58,36 @@ after work it is the best to stop all containers by calling this command
 Fronted will be visible under:
 
 ```
-localhost:8080
+Windows: localhost:8080
+Mac/Linux: 192.168.99.100:8080
 ```
 
 Services unde:
 
 ```
-localhost:8000
+Windows: localhost:8000
+Mac/Linux: 192.168.99.100:8000
 ```
 
 Authentication database under:
 
 ```
-localhost:4321
+Windows: localhost:4321
+Mac/Linux: 192.168.99.100:4321
 ```
 
 Secondary database under:
 
 ```
-localhost:5432
+Windows: localhost:5432
+Mac/Linux: 192.168.99.100:5432
 ```
 
 Adminer under:
 
 ```
-localhost:6060
+Windows: localhost:6060
+Mac/Linux: 192.168.99.100:6060
 ```
 
 To connect to auth database use: 
@@ -100,3 +105,12 @@ Server: secondary-db:5432
 Username: postgres
 Password: password
 ```
+
+You can clone exiting services (auth and secondary) by using: 
+
+```
+docker-compose scale auth-service=3
+docker-compose scale secondary-service=2
+```
+
+above example will end up with 3 auth services and 2 secondary services 
