@@ -4,7 +4,8 @@ services:
     image: dockercloud/haproxy
     links:
      - auth-service
-     - secondary-service
+     - orders-service
+     - reservations-service
     ports:
      - '8000:80'
     volumes:
@@ -19,7 +20,8 @@ services:
       - "8080:7373"
     depends_on:
       - auth-service 
-      - secondary-service
+      - orders-service
+      - reservations-service
 
   auth-service: 
     image: wookia/rso-services-auth:latest
@@ -36,18 +38,32 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
 
-  secondary-service:
-    image: wookia/rso-services-secondary:latest
+  orders-service:
+    image: wookia/rso-services-orders:latest
     environment: 
       - PORT=8000
-      - VIRTUAL_HOST=*/secondary, */secondary/*
+      - VIRTUAL_HOST=*/orders, */orders/*
     depends_on:
-      - secondary-db
+      - orders-db
 
-  secondary-db:
-    container_name: 'secondary-db'
+  orders-db:
+    container_name: 'orders-db'
     image: postgres
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
 
+  reservations-service:
+    image: wookia/rso-services-reservations:latest
+    environment: 
+      - PORT=8000
+      - VIRTUAL_HOST=*/reservations, */reservations/*
+    depends_on:
+      - reservations-db
+
+  reservations-db:
+    container_name: 'reservations-db'
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password

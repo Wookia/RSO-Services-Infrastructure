@@ -76,11 +76,18 @@ Windows: localhost:4321
 Mac/Linux: 192.168.99.100:4321
 ```
 
-Secondary database under:
+Orders database under:
 
 ```
 Windows: localhost:5432
 Mac/Linux: 192.168.99.100:5432
+```
+
+Reservation database under:
+
+```
+Windows: localhost:6543
+Mac/Linux: 192.168.99.100:6543
 ```
 
 Adminer under:
@@ -98,19 +105,28 @@ Username: postgres
 Password: password
 ```
 
-To connect to secondary database use: 
+To connect to orders database use: 
 
 ```
-Server: secondary-db:5432
+Server: orders-db:5432
 Username: postgres
 Password: password
 ```
 
-You can clone exiting services (auth and secondary) by using: 
+To connect to reservations database use: 
+
+```
+Server: reservations-db:5432
+Username: postgres
+Password: password
+```
+
+You can clone exiting services (auth and orders) by using: 
 
 ```
 docker-compose scale auth-service=3
-docker-compose scale secondary-service=2
+docker-compose scale orders-service=2
+docker-compose scale reservations-service=4
 ```
 
-above example will end up with 3 auth services and 2 secondary services 
+above example will end up with 3 auth services, 2 orders services and 4 reservations service
