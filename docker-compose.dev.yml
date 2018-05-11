@@ -52,6 +52,11 @@ services:
     environment: 
       - PORT=8000
       - VIRTUAL_HOST=*/orders, */orders/*
+      - DB_HOST=orders-db
+      - DB_PORT=5432
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=password
     depends_on:
       - orders-db
     volumes:
@@ -91,3 +96,4 @@ services:
       restart: always
       ports:
         - 6060:8080
+
