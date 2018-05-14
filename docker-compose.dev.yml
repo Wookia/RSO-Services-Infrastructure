@@ -35,7 +35,7 @@ services:
     depends_on:
       - auth-db
     volumes:
-      - /dev-keys:/dev-keys
+      - ./dev-keys:/dev-keys
 
   auth-db:
     container_name: 'auth-db'
@@ -52,10 +52,15 @@ services:
     environment: 
       - PORT=8000
       - VIRTUAL_HOST=*/orders, */orders/*
+      - DB_HOST=orders-db
+      - DB_PORT=5432
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=password
     depends_on:
       - orders-db
     volumes:
-      - /dev-keys/public.pem:/dev-keys/public.pem
+      - ./dev-keys/public.pem:/dev-keys/public.pem
 
   orders-db:
     container_name: 'orders-db'
@@ -75,7 +80,7 @@ services:
     depends_on:
       - reservations-db
     volumes:
-      - /dev-keys/public.pem:/dev-keys/public.pem
+      - ./dev-keys/public.pem:/dev-keys/public.pem
 
   reservations-db:
     container_name: 'reservations-db'
@@ -91,3 +96,4 @@ services:
       restart: always
       ports:
         - 6060:8080
+
