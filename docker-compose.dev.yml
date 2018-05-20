@@ -76,7 +76,7 @@ services:
     image: wookia/rso-services-reservations:latestdev
     environment: 
       - PORT=8000
-      - VIRTUAL_HOST=*/reservations, */reservations/*
+      - VIRTUAL_HOST=*/table, */table/*
     depends_on:
       - reservations-db
     volumes:
