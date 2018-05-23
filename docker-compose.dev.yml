@@ -51,7 +51,7 @@ services:
     image: wookia/rso-services-orders:latestdev
     environment: 
       - PORT=8000
-      - VIRTUAL_HOST=*/orders, */orders/*
+      - VIRTUAL_HOST=*/api/orders, */api/orders/*, */api/menu, */api/menu/*
       - DB_HOST=orders-db
       - DB_PORT=5432
       - DB_NAME=postgres
