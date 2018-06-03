@@ -8,23 +8,28 @@ services:
      - reservations-service
      - frontend
     ports:
-     - '8080:80'
+     - "8080:80"
+     - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DEFAULT_SSL_CERT=-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDV/igfhPh2AOMv\nBbfgzTrXODpHf7BS42K52gvKPfQqSWc6qnW0H0P+Qc6d1oQ24r7AkymjClPSCfHo\nqhHlwx2vcG3P3s67Ej0aOKgtgYlYfeNxSNm5qwKxvXV/Fpj4AB30BpZ91QUAsGeX\nGJjJh5cZ4WQ4anTAlJyI9XkoZyMT+FwQnPS7R5L6myPvLvjgj0LG6/i87JhnyxkR\nGElQYPqElTWAOUHPf/6w/yMbvNPTpZh3Jt/wXA21FoU9G9178glc8hx0rwCzbmqa\nSPiwiEKQbGgKWuOYfywTtP9Ay3T3J4oTwK/NlOsJV5teXgTCev2gcL8qR31spI1P\ngDcaB53fAgMBAAECggEAZ8MfbXkqiP2RK2HYcXbSSz2GdNjjhK2hV4D1KpGz7TU+\niuHQxRBMBeOe7kXwQjTcTcCN9fKyBiywUiL1HrXnlQQtGxhsoaUMX8SNN9OR54jT\nWkD64d6cJdc6O++XKNnVrFftbQJ3tIfVExzoKQBIMlJqKDjmd+MXrAlrQD4SckGe\nR/i7g8cON6Au+vzBqGaeWrh+FeK8uZBtu0yAJnvKQjGioxlN1zKtloMtJy/sNaV+\nKbiXnqbIzq5AVTYDRJh+76Z/CBWKsF9nPdVUlJKirdsca8niieqDhUybQxt6A+1Y\nJseR87twUKJJxpkHQgaTSXnfiX/YsCF294C5LHvdYQKBgQDvXyrZcMUphF7gFmQE\nPaDsowpIz8C47umppJ+dU5BITf6ajE7Dgh+WXhA7otvnUNnHXLpzp6qttskvQHGO\nKRf+UfPeMBmYM/9oV90AxVYJ3yPR+iMfTSwrUkKhNlQz1CfCwYuobpunDORdW/z3\ngwn9A4mGSzAKgN4kkhtb7JYCyQKBgQDk26qhf38XzUi7DGajdLx/JmNhaSUVwBXa\nPzpGfda7aca5dmv+BCkW5s0KOOwcPMr7BCrF1twj1hg9Sr16oI+Lynx1F3MuOOEh\nsx53q3bdF9Ywuqluxkfj7uWkf/7LNAzw+BSCY9gnzll5595nC950iWYLv1ca4u2u\nSVwFflEHZwKBgQCelESV4tCrbYdRG2RNLurieizBCelaWuSvv2EC4C5QyGLozhUM\nDrOQcWZ9q6nVd8me+r6HCkfXZ6WmySGxlWXQ1UgjJWh/XctRvAusjA8w4QQhAn6s\nKPsfBBMiLBTidSWWL5SvE//ITpEnjF5tNwGx/dro/fyoqLECN00qu/SxiQKBgD74\n1qWjgGQbP2UAj4lwiKFv/a6DEQpAFYM9HJri62AcResoU6TMnkXH8ila6lUGwU96\noQ5ZBa/yrC7JTwPcBEORztclQbM5QXFVaQ/CpW1GrtAvvIlXk9Z7GMM/2OsvAlSX\n3oTWVlb1p5csnvy5vldQqzyWRLCIOqBXXTPBwygHAoGBAN9DGY7Zzn3rJ3WIS7/r\n+FtN5gwOz5HdvWuOJzQgMiD2CblG9sp/vBFq9UZSnEO4QD5LC09SR8J3ZtnwLeh1\nCtwd+iwTCuodkvl1q/26843wqr37g5WoUuyLsHcebGhrM4lQcvMgR3S09ocTKDa5\nXxIAHYgSBHwhfs8Um+6fGug+\n-----END PRIVATE KEY-----\n-----BEGIN CERTIFICATE-----\nMIIC5TCCAc2gAwIBAgIJAKDH9uCUkj//MA0GCSqGSIb3DQEBCwUAMBQxEjAQBgNV\nBAMTCWxvY2FsaG9zdDAeFw0xODA2MDMyMTU1NDBaFw0yMTA1MTgyMTU1NDBaMBQx\nEjAQBgNVBAMTCWxvY2FsaG9zdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC\nggEBANX+KB+E+HYA4y8Ft+DNOtc4Okd/sFLjYrnaC8o99CpJZzqqdbQfQ/5Bzp3W\nhDbivsCTKaMKU9IJ8eiqEeXDHa9wbc/ezrsSPRo4qC2BiVh943FI2bmrArG9dX8W\nmPgAHfQGln3VBQCwZ5cYmMmHlxnhZDhqdMCUnIj1eShnIxP4XBCc9LtHkvqbI+8u\n+OCPQsbr+LzsmGfLGREYSVBg+oSVNYA5Qc9//rD/Ixu809OlmHcm3/BcDbUWhT0b\n3XvyCVzyHHSvALNuappI+LCIQpBsaApa45h/LBO0/0DLdPcnihPAr82U6wlXm15e\nBMJ6/aBwvypHfWykjU+ANxoHnd8CAwEAAaM6MDgwFAYDVR0RBA0wC4IJbG9jYWxo\nb3N0MAsGA1UdDwQEAwIHgDATBgNVHSUEDDAKBggrBgEFBQcDATANBgkqhkiG9w0B\nAQsFAAOCAQEABczzTTekzZXyAcUoyzM/rKOo5UagWMwUP0mXzKjj+emb8A3l5eDB\njKQyzZNB2c7OZ+8SgpN6ePkyw0RWc1HP5QmMK8fn9pYSoLSK0Vfx13CK/Yg/C+6r\nXC208ioM2qodiabnqewAgqCgVpKudU8biCUBbG88Z5HNjKRmvzGIWegu7kbujVgY\nb8foftkn90LjNKCJyZDu3/PzhRoPunflOSZ4vtjBK/NJ6OM4L+pjErZnDcy2YMim\nN8GrnCSSht3QYjij3fx/oW5K0AncLIGqw52N04wLzapUFI3ahyGZ8AZWnH5duu3y\nKZN3VSyLGjsMgmV2S+cX7ALCMvzCRdZhvg==\n-----END CERTIFICATE-----\n
 
   frontend: 
     image: wookia/rso-frontend:latestdev
     environment:
       - PORT=8000
-      - VIRTUAL_HOST=*
+      - VIRTUAL_HOST=https://*
       - VIRTUAL_HOST_WEIGHT=0
+      - FORCE_SSL=yes
 
   auth-service: 
     image: wookia/rso-services-auth:latestdev
     environment: 
       - PORT=8000
-      - VIRTUAL_HOST=*/auth, */auth/*, */user, */user/*
+      - VIRTUAL_HOST=https://*/auth, https://*/auth/*, https://*/user, https://*/user/*
       - VIRTUAL_HOST_WEIGHT=1
+      - FORCE_SSL=yes
       - DB_HOST=auth-db
       - DB_PORT=5432
       - DB_NAME=postgres
@@ -49,8 +54,9 @@ services:
     image: wookia/rso-services-orders:latestdev
     environment: 
       - PORT=8000
-      - VIRTUAL_HOST=*/api/orders, */api/orders/*, */api/menu, */api/menu/*
+      - VIRTUAL_HOST=https://*/api/orders, https://*/api/orders/*, https://*/api/menu, https://*/api/menu/*
       - VIRTUAL_HOST_WEIGHT=1
+      - FORCE_SSL=yes
       - DB_HOST=orders-db
       - DB_PORT=5432
       - DB_NAME=postgres
@@ -75,8 +81,9 @@ services:
     image: wookia/rso-services-reservations:latestdev
     environment: 
       - PORT=8000
-      - VIRTUAL_HOST=*/api/table, */api/table/*, */api/reservation, */api/reservation/*
+      - VIRTUAL_HOST=https://*/api/table, https://*/api/table/*, https://*/api/reservation, https://*/api/reservation/*
       - VIRTUAL_HOST_WEIGHT=1
+      - FORCE_SSL=yes
       - DB_HOST=orders-db
       - DB_PORT=5432
       - DB_NAME=postgres

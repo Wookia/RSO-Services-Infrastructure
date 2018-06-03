@@ -130,3 +130,6 @@ docker-compose scale reservations-service=4
 ```
 
 above example will end up with 3 auth services, 2 orders services and 4 reservations service
+
+
+You need to add ca.crt to your brawser to make itself trusted: for chrome check [this](https://stackoverflow.com/questions/7580508/getting-chrome-to-accept-self-signed-localhost-certificate)
