@@ -6,27 +6,25 @@ services:
      - auth-service
      - orders-service
      - reservations-service
+     - frontend
     ports:
-     - '8000:80'
+     - '8080:80'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
   frontend: 
-    container_name: 'frontend'
     image: wookia/rso-frontend:latestdev
     environment:
-      PORT: "7373"
-    ports:
-      - "8080:7373"
-    depends_on:
-      - auth-service 
-      - orders-service
+      - PORT=8000
+      - VIRTUAL_HOST=*
+      - VIRTUAL_HOST_WEIGHT=0
 
   auth-service: 
     image: wookia/rso-services-auth:latestdev
     environment: 
       - PORT=8000
       - VIRTUAL_HOST=*/auth, */auth/*, */user, */user/*
+      - VIRTUAL_HOST_WEIGHT=1
       - DB_HOST=auth-db
       - DB_PORT=5432
       - DB_NAME=postgres
@@ -52,6 +50,7 @@ services:
     environment: 
       - PORT=8000
       - VIRTUAL_HOST=*/api/orders, */api/orders/*, */api/menu, */api/menu/*
+      - VIRTUAL_HOST_WEIGHT=1
       - DB_HOST=orders-db
       - DB_PORT=5432
       - DB_NAME=postgres
@@ -77,6 +76,12 @@ services:
     environment: 
       - PORT=8000
       - VIRTUAL_HOST=*/api/table, */api/table/*, */api/reservation, */api/reservation/*
+      - VIRTUAL_HOST_WEIGHT=1
+      - DB_HOST=orders-db
+      - DB_PORT=5432
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=password
     depends_on:
       - reservations-db
     volumes:
