@@ -27,7 +27,7 @@ services:
     image: wookia/rso-services-auth:latestdev
     environment: 
       - PORT=8000
-      - VIRTUAL_HOST=https://*/auth, https://*/auth/*, https://*/user, https://*/user/*
+      - VIRTUAL_HOST=https://*/api/auth, https://*/api/auth/*, https://*/api/user, https://*/api/user/*
       - VIRTUAL_HOST_WEIGHT=1
       - FORCE_SSL=yes
       - DB_HOST=auth-db
