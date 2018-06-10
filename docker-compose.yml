@@ -83,10 +83,13 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
+      - PGDATA=/tm
     networks: 
       - backend
     deploy:
       replicas: 1
+    volumes:
+      - ./auth_data:/var/lib/postgresql/data
 
   orders-service:
     image: wookia/rso-services-orders:latest
@@ -123,10 +126,13 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
+      - PGDATA=/tm
     networks: 
       - backend
     deploy:
       replicas: 1
+    volumes:
+      - ./order_data:/var/lib/postgresql/data
 
   reservations-service:
     image: wookia/rso-services-reservations:latest
@@ -162,7 +168,10 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
+      - PGDATA=/tmp
     networks: 
       - backend
     deploy:
       replicas: 1
+    volumes:
+      - ./reservation_data:/var/lib/postgresql/data
