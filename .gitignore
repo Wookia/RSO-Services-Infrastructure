@@ -1,3 +1,6 @@
 package-lock.json
 /.vs
 .vscode/settings.json
+auth_data/*
+order_data/*
+reservation_data/*
